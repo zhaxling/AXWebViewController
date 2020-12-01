@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     
 s.name         = "ZNWebViewController"
-s.version      = "0.1.0"
+s.version      = "1.0.1"
 s.summary      = "A light weight web view controller in iOS."
 
 s.description  = <<-DESC
