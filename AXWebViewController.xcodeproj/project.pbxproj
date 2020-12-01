@@ -51,6 +51,7 @@
 		3B7311EC599653BFAAF42107 /* Pods-AXWebViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AXWebViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AXWebViewController/Pods-AXWebViewController.debug.xcconfig"; sourceTree = "<group>"; };
 		A13CC1551E977227003AC1B2 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		A13CC1561E977227003AC1B2 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		D72B4A9B25760E63002469FF /* ZNWebViewController.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ZNWebViewController.podspec; sourceTree = "<group>"; };
 		DCA3C59D1FB0302F008DB632 /* FullScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
 		DCA3C59E1FB0302F008DB632 /* FullScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullScreenViewController.m; sourceTree = "<group>"; };
 		DCABA0191EC5EE2A005C7D31 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		01513BE21C28F70700CB8238 = {
 			isa = PBXGroup;
 			children = (
+				D72B4A9B25760E63002469FF /* ZNWebViewController.podspec */,
 				01513BED1C28F70700CB8238 /* AXWebViewController */,
 				01513BEC1C28F70700CB8238 /* Products */,
 				0BC220E02B437FE0466F4248 /* Pods */,
@@ -200,7 +202,6 @@
 				01513BE71C28F70700CB8238 /* Sources */,
 				01513BE81C28F70700CB8238 /* Frameworks */,
 				01513BE91C28F70700CB8238 /* Resources */,
-				F3182DEE5A600ABFAF07F7DC /* [CP] Embed Pods Frameworks */,
 				90CC7504393E7254ABAF393F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -223,7 +224,7 @@
 				TargetAttributes = {
 					01513BEA1C28F70700CB8238 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = TKA48YVS5T;
+						DevelopmentTeam = 4B5BG6V8R2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -233,9 +234,11 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 01513BE21C28F70700CB8238;
 			productRefGroup = 01513BEC1C28F70700CB8238 /* Products */;
@@ -287,32 +290,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AXWebViewController/Pods-AXWebViewController-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AXWebViewController/Pods-AXWebViewController-resources.sh",
 				"${PODS_ROOT}/AXIndicatorView/AXIndicatorView/Classes/AXIndicatorView.bundle",
 				"${PODS_ROOT}/AXPracticalHUD/AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AXIndicatorView.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AXPracticalHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AXWebViewController/Pods-AXWebViewController-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3182DEE5A600ABFAF07F7DC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AXWebViewController/Pods-AXWebViewController-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AXWebViewController/Pods-AXWebViewController-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -464,11 +453,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TKA48YVS5T;
+				DEVELOPMENT_TEAM = 4B5BG6V8R2;
 				INFOPLIST_FILE = AXWebViewController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = KEEPStudio.AXWebViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,7 +472,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = TKA48YVS5T;
 				INFOPLIST_FILE = AXWebViewController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KEEPStudio.AXWebViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";

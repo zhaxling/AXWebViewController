@@ -30,14 +30,9 @@
 #define __IPHONE_9_0      90000
 #endif
 
-#ifndef AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
-#define AX_WEB_VIEW_CONTROLLER_USING_WEBKIT __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
-// #define AX_WEB_VIEW_CONTROLLER_USING_WEBKIT 1
-#endif
-
-#ifndef AX_WEB_VIEW_CONTROLLER_DEFINES_PROXY
-#define AX_WEB_VIEW_CONTROLLER_DEFINES_PROXY AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
-#endif
+//#ifndef AX_WEB_VIEW_CONTROLLER_DEFINES_PROXY
+//#define AX_WEB_VIEW_CONTROLLER_DEFINES_PROXY AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
+//#endif
 
 #ifndef AX_WEB_VIEW_CONTROLLER_AVAILABLITY
 #define AX_WEB_VIEW_CONTROLLER_AVAILABLITY BOOL AX_WEB_VIEW_CONTROLLER_iOS8_0_AVAILABLE(void);\
@@ -46,12 +41,12 @@
 #endif
 
 #import <UIKit/UIKit.h>
-#import <NJKWebViewProgress/NJKWebViewProgress.h>
-#import <NJKWebViewProgress/NJKWebViewProgressView.h>
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
+//#import <NJKWebViewProgress/NJKWebViewProgress.h>
+//#import <NJKWebViewProgress/NJKWebViewProgressView.h>
+
 #import <WebKit/WebKit.h>
 #import "AXSecurityPolicy.h"
-#endif
+
 #ifndef AX_REQUIRES_SUPER
 #if __has_attribute(objc_requires_super)
 #define AX_REQUIRES_SUPER __attribute__((objc_requires_super))
@@ -111,7 +106,6 @@ typedef NS_ENUM(NSInteger, AXWebViewControllerNavigationType) {
 
 AX_WEB_VIEW_CONTROLLER_AVAILABLITY;
 
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
 typedef NSURLSessionAuthChallengeDisposition (^WKWebViewDidReceiveAuthenticationChallengeHandler)(WKWebView *webView, NSURLAuthenticationChallenge *challenge, NSURLCredential * _Nullable __autoreleasing * _Nullable credential);
 API_AVAILABLE(ios(8.0))
 @interface AXWebViewController : UIViewController <WKUIDelegate, WKNavigationDelegate>
@@ -120,28 +114,11 @@ API_AVAILABLE(ios(8.0))
     WKWebView *_webView;
     NSURL *_URL;
 }
-#else
-API_AVAILABLE(ios(7.0))
-@interface AXWebViewController : UIViewController <UIWebViewDelegate>
-{
-@protected
-    UIWebView *_webView;
-    NSURL *_URL;
-}
-#endif
 /// Delegate.
 @property(assign, nonatomic) id<AXWebViewControllerDelegate>delegate;
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
-/// WebKit web view.
 @property(readonly, nonatomic) WKWebView *webView;
-#else
-/// Web view.
-@property(readonly, nonatomic) UIWebView *webView;
-#endif
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
 /// Default is NO. Enabled to allow present alert views.
 @property(assign, nonatomic) BOOL enabledWebViewUIDelegate;
-#endif
 /// Open app link in app store app. Default is NO.
 @property(assign, nonatomic) BOOL reviewsAppInAppStore;
 /// Max length of title string content. Default is 10.
@@ -184,7 +161,6 @@ API_AVAILABLE(ios(7.0))
 ///
 /// @return a instance of `AXWebViewController`.
 - (instancetype)initWithRequest:(NSURLRequest *)request;
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
 /// Get a instance of `AXWebViewController` by a url and configuration of web view.
 ///
 /// @param URL a URL to be loaded.
@@ -199,7 +175,7 @@ API_AVAILABLE(ios(7.0))
 ///
 /// @return a instance of `AXWebViewController`.
 - (instancetype)initWithRequest:(NSURLRequest *)request configuration:(WKWebViewConfiguration *)configuration;
-#endif
+
 /// Get a instance of `AXWebViewController` by a HTML string and a base URL.
 ///
 /// @param HTMLString a HTML string object.
@@ -235,12 +211,10 @@ API_AVAILABLE(ios(7.0))
 /// Called when web view did start loading. Do not call this directly.
 ///
 - (void)didStartLoad AX_REQUIRES_SUPER NS_DEPRECATED_IOS(2_0, 8_0);
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
 /// Called when web view(WKWebView) did start loading. Do not call this directly.
 ///
 /// @param navigation Navigation object of the current request info.
 - (void)didStartLoadWithNavigation:(WKNavigation *)navigation AX_REQUIRES_SUPER NS_AVAILABLE(10_10, 8_0);
-#endif
 /// Called when web view did finish loading. Do not call this directly.
 ///
 - (void)didFinishLoad AX_REQUIRES_SUPER;
@@ -269,7 +243,6 @@ API_AVAILABLE(ios(7.0))
 @property(readonly, nonatomic) UILabel *descriptionLabel;
 @end
 
-#if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
 @interface AXWebViewController (Security)
 /// Challenge handler for the credential.
 @property(copy, nonatomic, nullable) WKWebViewDidReceiveAuthenticationChallengeHandler challengeHandler;
@@ -277,5 +250,4 @@ API_AVAILABLE(ios(7.0))
 /// `AXWebViewController` uses the `defaultPolicy` unless otherwise specified.
 @property(readwrite, nonatomic, nullable) AXSecurityPolicy *securityPolicy;
 @end
-#endif
 NS_ASSUME_NONNULL_END
